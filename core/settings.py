@@ -39,20 +39,28 @@ RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
 if RENDER_EXTERNAL_HOSTNAME:    
     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
-# Application definition
+RECAPTCHA_PROXY = {'http': 'http://127.0.0.1:8000', 'https': 'https://127.0.0.1:8000'}
 
-INSTALLED_APPS = [
+RECAPTCHA_PUBLIC_KEY = '6Lf18TMjAAAAAKmO_bTWroLz6FTTdchdBD14VMJB'
+RECAPTCHA_PRIVATE_KEY = '6Lf18TMjAAAAAI22fIYDH2rYcQAb0pLO9ciSYJia'
+
+GOOGLE_RECAPTCHA_SITE_KEY = '6Lf18TMjAAAAAKmO_bTWroLz6FTTdchdBD14VMJB'
+GOOGLE_RECAPTCHA_SECRET_KEY ='6Lf18TMjAAAAAI22fIYDH2rYcQAb0pLO9ciSYJia'
+SILENCED_SYSTEM_CHECKS = ['captcha.recaptcha_test_key_error']
+
+INSTALLED_APPS = [ 'captcha',
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
-    "django.contrib.staticfiles",
-
+    "django.contrib.staticfiles",   
+   
     'theme_material_kit',
     "home",
 ]
 
+# Application definition
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
